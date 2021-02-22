@@ -6,12 +6,12 @@
             "CSS",
             "JavaScript"
         ],
-        "answer": "1"
+        "answer": "CSS"
     },
     {
         "title":"const person={age:20,name:'太郎',height:170}\nconsole.log(person.name)\n出力されるのはどれ？",
         "answers": ["20","太郎","170"],
-        "answer":"1"
+        "answer":"太郎"
     },
     {
         "title":"console.log(2*10%3)\n出力されるのはどれ？",

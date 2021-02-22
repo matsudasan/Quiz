@@ -12,7 +12,7 @@ const ansResultTitle = document.getElementById('ans-result-title')
 const description = document.getElementById('description')
 const next = document.getElementById('next')
 const result = document.getElementById('result')
-const resultP = document.getElementById('result-p')
+const resulth1 = document.getElementById('result-h1')
 
 let quizs
 let num = 0
@@ -30,15 +30,22 @@ const Shuffle = () => {
         const index = Math.floor(Math.random() * i);
         [quizs[index], quizs[i - 1]] = [quizs[i - 1], quizs[index]]
     }
+    for(let i=0; i<quizs.length; i++){
+        for(let j=quizs[i].answers.length; 1<j; j--){
+            const index = Math.floor(Math.random() * j);
+            [quizs[i].answers[index],quizs[i].answers[j-1]]=[quizs[i].answers[j-1],quizs[i].answers[index]]
+        }
+    }
 }
 
 ReadJson()
 
 const ShowQuiz = () => {
     title.innerText = quizs[num].title
-    number.textContent = `${num}/${quizs.length}`
+    number.textContent = `${num+1}/${quizs.length}`
     for (let i = 0; i < 3; i++) {
         answer[i].textContent = quizs[num].answers[i]
+        radio[i].value=quizs[num].answers[i]
     }
 }
 
@@ -51,9 +58,9 @@ button.onclick = () => {
                 }
                 ele.disabled = true
             })
-            ans += i === Number(quizs[num].answer) ? 1 : 0
-            ansResultTitle.textContent = i === Number(quizs[num].answer) ? "正解です" : "不正解です。"
-            description.textContent = i === Number(quizs[num].answer) ? "見事正解しました" : `正解は${quizs[num].answer}番でした。`
+            ans += radio[i].value === quizs[num].answer ? 1 : 0
+            ansResultTitle.textContent = radio[i].value === quizs[num].answer ? "正解です" : "不正解です。"
+            description.textContent = radio[i].value === quizs[num].answer ? "見事正解しました" : `正解は${quizs[num].answer}でした。`
             ansResult.classList.remove('none')
             button.classList.add('none')
             next.classList.remove('none')
@@ -66,7 +73,8 @@ next.onclick = () => {
     num += 1
     if (num >= quizs.length) {
         result.classList.remove('none')
-        resultP.textContent = `${quizs.length}門中${ans}門正解でした`
+        resulth1.textContent = `${quizs.length}問中${ans}問
+        正解でした`
         ansResultTitle.textContent = ""
         description.textContent = ""
         qustion.classList.add('none')
