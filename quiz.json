@@ -1,0 +1,21 @@
+[
+    {
+        "title": "画面の装飾を行う言語は?",
+        "answers": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "answer": "1"
+    },
+    {
+        "title":"const person={age:20,name:'太郎',height:170}\nconsole.log(person.name)\n出力されるのはどれ？",
+        "answers": ["20","太郎","170"],
+        "answer":"1"
+    },
+    {
+        "title":"console.log(2*10%3)\n出力されるのはどれ？",
+        "answers": ["0","1","2"],
+        "answer":"2"
+    }
+]
